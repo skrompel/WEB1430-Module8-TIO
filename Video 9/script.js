@@ -1,6 +1,7 @@
 // URL for images: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png
 
 const searchBtn = document.querySelector('.black-button');
+const dPad = document.querySelector('.d-pad');
 const inputField = document.querySelector('.number-input');
 const imageScreen = document.querySelector('.pokemon-picture');
 const nameScreen = document.getElementById('name');
@@ -39,4 +40,12 @@ inputField.addEventListener('keydown', (event) => {
 
 searchBtn.addEventListener('click', () => {
     getPokemon(inputField.value);
+});
+
+// Click the d-pad to get a random Pokemon
+dPad.addEventListener('click', () => {
+    const maxPokemon = 1025; 
+    const randomId = Math.floor(Math.random() * maxPokemon) + 1;
+    inputField.value = randomId;
+    getPokemon(randomId);
 });
